@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1= title
+  
+  if errors.errors !== undefined
+    each message in errors.errors
+        p=message
+
+  form(method='post')
+    p
+        label(for='title') Title
+        input(type='text' name='title' id='title' value=body.title||'')
+    p
+        label(for='description') Description
+        textarea(name='description' id='description')=body.description||''
+    button(type='submit' value='save') Post
